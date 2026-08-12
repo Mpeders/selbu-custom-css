@@ -1,0 +1,1279 @@
+/*
+ * Selbu Sparebank – WordPress
+ * Visuell videreføring av Selbu Sparebanks etablerte nettdesign.
+ *
+ * Omfang:
+ * - grunnstil og innholdsrytme
+ * - navigasjon og bunnområde
+ * - WordPress- og DSS-innholdsmoduler
+ * - funksjonelle moduler
+ */
+
+@import url("https://use.typekit.net/gfv4cwc.css");
+@import url("https://fonts.googleapis.com/css2?family=Material+Icons");
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded");
+
+/* 1. Designverdier */
+
+:root {
+  --selbu-font-heading: "Arial Nova", Arial, sans-serif;
+  --selbu-font-body: "Arial Nova", Arial, sans-serif;
+
+  --selbu-primary: #00748d;
+  --selbu-primary-hover: #4097a9;
+  --selbu-primary-soft: #bfdce2;
+  --selbu-primary-pale: #e5f1f3;
+
+  --selbu-secondary: #0091b3;
+  --selbu-secondary-soft: #bfe3ec;
+  --selbu-secondary-pale: #e5f4f7;
+
+  --selbu-dark: #313d48;
+  --selbu-dark-hover: #646d76;
+  --selbu-text: #2d2d2d;
+  --selbu-black: #181717;
+
+  --selbu-lilac: #e5e1e6;
+  --selbu-lilac-pale: #f9f8f9;
+  --selbu-peach: #edc7a2;
+  --selbu-white: #ffffff;
+  --selbu-page: #fcfcfc;
+  --selbu-warning: #faea96;
+  --selbu-critical: #ff8674;
+
+  --selbu-width-text: 744px;
+  --selbu-width-module: 1120px;
+  --selbu-width-wide: 1520px;
+
+  --selbu-radius-small: 4px;
+  --selbu-radius-button: 8px;
+  --selbu-radius-card: 16px;
+  --selbu-radius-feature: 32px;
+
+  --selbu-shadow-card: 0 0 13px rgb(0 0 0 / 5%), 0 0 2px rgb(0 0 0 / 5%);
+  --selbu-shadow-hover: 0 1px 13px rgb(0 0 0 / 18%), 0 0 2px rgb(0 0 0 / 7%);
+  --selbu-shadow-bar:
+    inset 0 4px 8px rgb(0 0 0 / 4%), inset 0 2px 2px rgb(0 0 0 / 4%),
+    0 4px 8px rgb(0 0 0 / 4%), 0 2px 2px rgb(0 0 0 / 4%);
+
+  --selbu-space-xs: 8px;
+  --selbu-space-sm: 16px;
+  --selbu-space-md: 24px;
+  --selbu-space-lg: 32px;
+  --selbu-space-section: 64px;
+}
+
+body.bedrift {
+  --selbu-radius-card: 0;
+  --selbu-radius-feature: 0;
+}
+
+/* 2. Grunnstil */
+
+html {
+  overflow-y: scroll;
+}
+
+body {
+  margin: 0;
+  color: var(--selbu-text);
+  background: var(--selbu-page);
+  font-family: var(--selbu-font-body);
+}
+
+body,
+button,
+input,
+select,
+textarea {
+  font-family: var(--selbu-font-body);
+}
+
+a,
+a:visited {
+  color: var(--selbu-dark);
+}
+
+a:hover {
+  color: var(--selbu-primary);
+}
+
+p,
+.wp-block-paragraph {
+  margin: 0 0 var(--selbu-space-sm) !important;
+  padding: 0 !important;
+  color: var(--selbu-text);
+  font-size: 1rem !important;
+  line-height: 1.25rem !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0;
+  font-family: var(--selbu-font-heading);
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+h1 {
+  margin-bottom: var(--selbu-space-sm);
+  color: var(--selbu-primary);
+  font-size: 2.5rem;
+}
+
+h2 {
+  margin-bottom: var(--selbu-space-sm);
+  color: var(--selbu-primary);
+  font-size: 2rem;
+}
+
+h3 {
+  margin-bottom: var(--selbu-space-sm);
+  color: var(--selbu-primary);
+  font-size: 1.5rem;
+}
+
+h4 {
+  margin-bottom: var(--selbu-space-sm);
+  color: var(--selbu-secondary);
+  font-size: 1.25rem;
+}
+
+img {
+  max-width: 100%;
+}
+
+:focus-visible {
+  outline: 3px solid var(--selbu-secondary);
+  outline-offset: 3px;
+}
+
+::selection {
+  color: var(--selbu-black);
+  background: var(--selbu-primary-soft);
+}
+
+@media (max-width: 639px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 640px) {
+  html {
+    font-size: 18px;
+  }
+}
+
+/* 3. Sidebredder og løpende innhold */
+
+main#content .content-blocks {
+  box-sizing: border-box;
+}
+
+main#content
+  .content-blocks
+  > :where(.wp-block-heading, .wp-block-paragraph, .wp-block-list):not(
+    .selbu-wide,
+    .selbu-unstyled
+  ) {
+  box-sizing: border-box;
+  width: calc(100% - 32px);
+  max-width: var(--selbu-width-text);
+  margin-right: auto !important;
+  margin-left: auto !important;
+}
+
+main#content .content-blocks > .wp-block-heading:not(.selbu-unstyled) {
+  margin-top: 48px;
+  margin-bottom: var(--selbu-space-sm);
+}
+
+main#content .content-blocks > .wp-block-paragraph:not(.selbu-unstyled) {
+  margin-bottom: var(--selbu-space-md) !important;
+}
+
+main#content .content-blocks > .wp-block-list:not(.selbu-unstyled) {
+  margin-top: 0;
+  margin-bottom: var(--selbu-space-md);
+  padding-left: 1.5rem;
+}
+
+main#content .content-blocks .wp-block-list,
+main#content .content-blocks .wp-block-list li {
+  color: var(--selbu-text);
+  font-family: var(--selbu-font-body);
+  font-size: 1rem !important;
+  line-height: 1.25rem !important;
+}
+
+main#content .content-blocks .wp-block-list li {
+  margin-bottom: var(--selbu-space-xs);
+  padding-left: 4px;
+}
+
+main#content .content-blocks .wp-block-list li:last-child {
+  margin-bottom: 0;
+}
+
+main#content .content-blocks .wp-block-list li::marker {
+  color: var(--selbu-primary);
+  font-size: 0.85em;
+}
+
+main#content .content-blocks .wp-block-list .wp-block-list {
+  margin-top: var(--selbu-space-xs);
+  margin-bottom: 0;
+}
+
+.page-title,
+img.featured-image {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  main#content .content-blocks > .wp-block-heading:not(.selbu-unstyled) {
+    margin-top: var(--selbu-space-lg);
+  }
+}
+
+/* 4. Toppområde, navigasjon og brødsmule */
+
+header#navigation {
+  position: relative;
+  z-index: 100;
+  background: var(--selbu-white);
+  box-shadow: var(--selbu-shadow-bar);
+}
+
+.header__inner {
+  box-sizing: border-box;
+  min-height: 80px;
+  padding: var(--selbu-space-sm);
+}
+
+.header__logo img {
+  width: 220px;
+  height: auto;
+}
+
+.header__right .btn--login,
+.header__right .btn--login:visited {
+  color: var(--selbu-white);
+  background: var(--selbu-primary);
+  border-radius: var(--selbu-radius-button);
+  box-shadow: var(--selbu-shadow-card);
+}
+
+.header__right .btn--login:hover,
+.header__right .btn--login:focus-visible {
+  color: var(--selbu-white);
+  background: var(--selbu-primary-hover);
+}
+
+.navigation__overlay__inner__top .main .navigation {
+  max-width: 800px;
+}
+
+.container.container--wide:has(> .btn--breadcrumb-link) {
+  display: flex;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: none;
+  min-height: 48px;
+  margin-top: 0 !important;
+  margin-bottom: var(--selbu-space-section) !important;
+  padding: 8px 16px;
+  background: var(--selbu-primary-pale);
+  box-shadow: var(--selbu-shadow-bar);
+}
+
+.btn.btn--breadcrumb-link {
+  box-sizing: border-box;
+  justify-content: flex-start;
+  width: 100%;
+  max-width: var(--selbu-width-wide);
+  margin: auto !important;
+  color: var(--selbu-dark);
+}
+
+@media (max-width: 781px) {
+  .header__inner {
+    min-height: 72px;
+    padding: 12px 16px;
+  }
+
+  .container.container--wide:has(> .btn--breadcrumb-link) {
+    margin-bottom: 40px !important;
+  }
+}
+
+/* 5. Knapper og lenkehandlinger */
+
+.dss-block--acf-buttons .menu {
+  display: flex;
+  flex-flow: row wrap;
+  gap: var(--selbu-space-sm);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.dss-block--acf-buttons .menu > li {
+  margin: 0;
+}
+
+.dss-block--acf-buttons .btn {
+  box-sizing: border-box;
+  min-height: 48px;
+  padding: 12px 24px !important;
+  border-radius: var(--selbu-radius-button);
+  font-size: 1.2rem;
+  line-height: 1.2;
+  transition:
+    color 180ms ease,
+    background-color 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.dss-block--acf-buttons a.btn--primary,
+.dss-block--acf-buttons a.btn--primary:visited {
+  color: var(--selbu-white);
+  background: var(--selbu-primary);
+  border: 2px solid var(--selbu-primary);
+}
+
+.dss-block--acf-buttons a.btn--primary:hover,
+.dss-block--acf-buttons a.btn--primary:focus-visible {
+  color: var(--selbu-white);
+  background: var(--selbu-primary-hover);
+  border-color: var(--selbu-primary-hover);
+  box-shadow: var(--selbu-shadow-hover);
+}
+
+.dss-block--acf-buttons a.btn--secondary,
+.dss-block--acf-buttons a.btn--secondary:visited {
+  color: var(--selbu-text);
+  background: var(--selbu-white);
+  border: 2px solid var(--selbu-primary);
+}
+
+.dss-block--acf-buttons a.btn--secondary:hover,
+.dss-block--acf-buttons a.btn--secondary:focus-visible {
+  color: var(--selbu-black);
+  background: var(--selbu-primary-pale);
+  border-color: var(--selbu-primary);
+  box-shadow: var(--selbu-shadow-hover);
+}
+
+/* 6. Bilde- og tekstmoduler */
+
+main#content .content-blocks > .dss-block--acf-image-text:not(.selbu-unstyled) {
+  box-sizing: border-box;
+  overflow: hidden;
+  width: 100%;
+  max-width: var(--selbu-width-module);
+  margin-right: auto;
+  margin-bottom: var(--selbu-space-section);
+  margin-left: auto;
+  background: var(--selbu-white);
+  border-radius: var(--selbu-radius-card);
+  box-shadow: var(--selbu-shadow-card);
+}
+
+main#content
+  .content-blocks
+  > :is(
+    .dss-block--acf-image-text:first-child,
+    .dss-block--acf-image-text.selbu-hero
+  ):not(.selbu-unstyled) {
+  max-width: var(--selbu-width-wide);
+  background: var(--selbu-dark);
+  border-radius: var(--selbu-radius-feature);
+}
+
+main#content .dss-block--acf-image-text .dss-block__inner {
+  display: flex;
+  align-items: stretch;
+  min-height: 100%;
+}
+
+main#content .dss-block--acf-image-text.image-left .dss-block__inner,
+main#content .dss-block--acf-image-text.selbu-image-left .dss-block__inner {
+  flex-direction: row-reverse;
+}
+
+main#content .dss-block--acf-image-text .dss-block__content {
+  display: flex;
+  flex: 1 1 50%;
+  align-items: center;
+  box-sizing: border-box;
+  width: 50%;
+  min-width: 0;
+  margin: 0 !important;
+  padding: 32px 32px 32px 48px;
+}
+
+main#content .dss-block--acf-image-text .acf-innerblocks-container {
+  width: 100%;
+}
+
+main#content .dss-block--acf-image-text > .dss-block__inner > img,
+main#content .dss-block--acf-image-text .dss-block__inner > picture {
+  flex: 1 1 50%;
+  align-self: stretch;
+  width: 50% !important;
+  max-width: none !important;
+  height: auto;
+  margin: 0 !important;
+  border-radius: 0;
+  object-fit: cover;
+  aspect-ratio: 4 / 3;
+}
+
+main#content .dss-block--acf-image-text .dss-block__inner > picture img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+main#content
+  .content-blocks
+  > :is(
+    .dss-block--acf-image-text:first-child,
+    .dss-block--acf-image-text.selbu-hero
+  )
+  > .dss-block__inner
+  > :is(img, picture) {
+  aspect-ratio: 16 / 9;
+}
+
+main#content
+  .content-blocks
+  > :is(
+    .dss-block--acf-image-text:first-child,
+    .dss-block--acf-image-text.selbu-hero
+  )
+  :is(h1, h2, h3, h4, p, li) {
+  color: var(--selbu-white);
+}
+
+main#content
+  .content-blocks
+  > :is(
+    .dss-block--acf-image-text:first-child,
+    .dss-block--acf-image-text.selbu-hero
+  )
+  .dss-block__content {
+  background: transparent !important;
+}
+
+body.no-breadcrumb
+  main#content
+  .content-blocks
+  > .dss-block--acf-image-text:first-child {
+  margin-top: var(--selbu-space-section);
+}
+
+main#content .dss-block--acf-image-text .dss-block--acf-buttons {
+  margin-top: var(--selbu-space-md);
+}
+
+main#content .dss-block--acf-image-text .wp-block-heading {
+  margin-top: 0;
+}
+
+@media (max-width: 781px) {
+  main#content .dss-block--acf-image-text .dss-block__inner,
+  main#content .dss-block--acf-image-text.image-left .dss-block__inner,
+  main#content .dss-block--acf-image-text.selbu-image-left .dss-block__inner {
+    flex-direction: column;
+  }
+
+  main#content .dss-block--acf-image-text .dss-block__content {
+    order: 2;
+    width: 100%;
+    padding: var(--selbu-space-md);
+  }
+
+  main#content .dss-block--acf-image-text > .dss-block__inner > img,
+  main#content .dss-block--acf-image-text .dss-block__inner > picture {
+    order: 1;
+    width: 100% !important;
+    aspect-ratio: 16 / 9;
+  }
+}
+
+/* 7. Kolonner med kort */
+
+main#content
+  .content-blocks
+  > .wp-block-columns:has(
+    > .wp-block-column > :is(.dss-block--acf-image, .wp-block-image)
+  ):not(.selbu-unstyled) {
+  gap: var(--selbu-space-lg);
+  width: 100%;
+  max-width: var(--selbu-width-module);
+  margin-right: auto;
+  margin-bottom: var(--selbu-space-section);
+  margin-left: auto;
+}
+
+main#content
+  .content-blocks
+  > .wp-block-columns:has(
+    > .wp-block-column > :is(.dss-block--acf-image, .wp-block-image)
+  ):not(.selbu-unstyled)
+  > .wp-block-column {
+  position: relative;
+  overflow: hidden;
+  background: var(--selbu-white);
+  border-radius: var(--selbu-radius-card);
+  box-shadow: var(--selbu-shadow-card);
+  transition:
+    box-shadow 180ms ease,
+    transform 180ms ease;
+}
+
+main#content
+  .content-blocks
+  > .wp-block-columns:has(
+    > .wp-block-column > :is(.dss-block--acf-image, .wp-block-image)
+  ):not(.selbu-unstyled)
+  > .wp-block-column:focus-within {
+  box-shadow: var(--selbu-shadow-hover);
+}
+
+main#content
+  .content-blocks
+  > .wp-block-columns:has(
+    > .wp-block-column > :is(.dss-block--acf-image, .wp-block-image)
+  )
+  > .wp-block-column
+  > :is(.dss-block--acf-image, .wp-block-image) {
+  margin: 0;
+}
+
+main#content
+  .content-blocks
+  > .wp-block-columns:has(
+    > .wp-block-column > :is(.dss-block--acf-image, .wp-block-image)
+  )
+  > .wp-block-column
+  > :is(.dss-block--acf-image, .wp-block-image)
+  img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  border-radius: 0;
+  object-fit: cover;
+  aspect-ratio: 16 / 9;
+}
+
+main#content
+  .content-blocks
+  > .wp-block-columns:has(
+    > .wp-block-column > :is(.dss-block--acf-image, .wp-block-image)
+  )
+  > .wp-block-column
+  > .wp-block-heading {
+  margin: 0 !important;
+  padding: 24px 24px 12px !important;
+}
+
+main#content
+  .content-blocks
+  > .wp-block-columns:has(
+    > .wp-block-column > :is(.dss-block--acf-image, .wp-block-image)
+  )
+  > .wp-block-column
+  > .wp-block-paragraph {
+  margin: 0 !important;
+  padding: 0 24px 16px !important;
+}
+
+main#content
+  .content-blocks
+  > .wp-block-columns:has(
+    > .wp-block-column > :is(.dss-block--acf-image, .wp-block-image)
+  )
+  > .wp-block-column
+  > .wp-block-list {
+  margin: 0 !important;
+  padding: 0 24px 20px 44px !important;
+}
+
+main#content
+  .content-blocks
+  > .wp-block-columns:has(
+    > .wp-block-column > :is(.dss-block--acf-image, .wp-block-image)
+  )
+  > .wp-block-column
+  > .dss-block--acf-buttons {
+  margin: 0 !important;
+  padding: 8px 24px 24px !important;
+}
+
+@media (max-width: 781px) {
+  main#content
+    .content-blocks
+    > .wp-block-columns:has(
+      > .wp-block-column > :is(.dss-block--acf-image, .wp-block-image)
+    ) {
+    gap: var(--selbu-space-md);
+  }
+}
+
+/* 8. Snarveisknapper */
+
+main#content
+  .content-blocks
+  > .dss-block--acf-buttons:has(.menu > li:nth-child(5)):not(.selbu-unstyled),
+.dss-block--acf-buttons.selbu-quick-links {
+  width: 100%;
+  max-width: var(--selbu-width-module);
+  margin-right: auto;
+  margin-bottom: var(--selbu-space-section);
+  margin-left: auto;
+}
+
+main#content
+  .content-blocks
+  > .dss-block--acf-buttons:has(.menu > li:nth-child(5))
+  .menu,
+.dss-block--acf-buttons.selbu-quick-links .menu {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--selbu-space-sm);
+  width: 100%;
+}
+
+main#content
+  .content-blocks
+  > .dss-block--acf-buttons:has(.menu > li:nth-child(5))
+  .menu
+  > li,
+.dss-block--acf-buttons.selbu-quick-links .menu > li {
+  display: flex;
+  min-width: 0;
+}
+
+main#content
+  .content-blocks
+  > .dss-block--acf-buttons:has(.menu > li:nth-child(5))
+  .btn,
+.dss-block--acf-buttons.selbu-quick-links .btn {
+  justify-content: flex-start;
+  width: 100%;
+  min-height: 100%;
+  text-align: left;
+}
+
+main#content
+  .content-blocks
+  > .dss-block--acf-buttons:has(.menu > li:nth-child(5))
+  .external-icon,
+.dss-block--acf-buttons.selbu-quick-links .external-icon {
+  display: none;
+}
+
+@media (max-width: 1020px) {
+  main#content
+    .content-blocks
+    > .dss-block--acf-buttons:has(.menu > li:nth-child(5))
+    .menu,
+  .dss-block--acf-buttons.selbu-quick-links .menu {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  main#content
+    .content-blocks
+    > .dss-block--acf-buttons:has(.menu > li:nth-child(5))
+    .menu,
+  .dss-block--acf-buttons.selbu-quick-links .menu {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--selbu-space-xs);
+  }
+}
+
+@media (max-width: 420px) {
+  main#content
+    .content-blocks
+    > .dss-block--acf-buttons:has(.menu > li:nth-child(5))
+    .menu,
+  .dss-block--acf-buttons.selbu-quick-links .menu {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 9. Siste artikler */
+
+.latest-articles-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--selbu-space-sm);
+  width: 100%;
+  max-width: var(--selbu-width-module);
+  margin: 0 auto;
+}
+
+.dss-block--acf-latest-articles {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.dss-block--acf-latest-articles .dss-block__inner {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  height: 100%;
+  background: var(--selbu-white);
+  border-radius: var(--selbu-radius-card);
+  box-shadow: var(--selbu-shadow-card);
+  transition:
+    box-shadow 180ms ease,
+    outline-color 180ms ease;
+}
+
+.dss-block--acf-latest-articles:hover .dss-block__inner,
+.dss-block--acf-latest-articles:focus-within .dss-block__inner {
+  outline: 1px solid var(--selbu-primary);
+  box-shadow: var(--selbu-shadow-hover);
+}
+
+.dss-block--acf-latest-articles .image__wrapper {
+  margin: 0;
+  border-radius: 0;
+}
+
+.dss-block--acf-latest-articles img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 0;
+  object-fit: cover;
+  aspect-ratio: 16 / 9;
+}
+
+.dss-block--acf-latest-articles .content {
+  flex: 1;
+  padding: var(--selbu-space-sm);
+}
+
+.dss-block--acf-latest-articles h2 {
+  margin: 0 !important;
+  padding: 0 !important;
+  font-size: 1.35rem;
+  text-align: left;
+}
+
+.dss-block--acf-latest-articles a {
+  text-decoration: none !important;
+}
+
+.latest-articles-container__link {
+  width: 100%;
+  max-width: var(--selbu-width-module);
+  margin: var(--selbu-space-md) auto var(--selbu-space-section);
+}
+
+.latest-articles-container__link a {
+  color: var(--selbu-primary);
+  background: transparent;
+  text-underline-offset: 4px;
+}
+
+@media (max-width: 781px) {
+  .latest-articles-container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--selbu-space-xs);
+  }
+}
+
+/* 10. Ansatte */
+
+.dss-block--acf-employees {
+  width: 100%;
+  max-width: var(--selbu-width-module);
+  margin: var(--selbu-space-lg) auto var(--selbu-space-section);
+}
+
+.employees__filters {
+  display: none;
+}
+
+ul.employees__list {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--selbu-space-lg);
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.employee {
+  display: flex;
+  overflow: hidden;
+  flex-direction: column;
+  min-width: 0;
+  background: var(--selbu-white);
+  border-radius: var(--selbu-radius-card);
+  box-shadow: var(--selbu-shadow-card);
+}
+
+.employee__image {
+  margin: 0;
+  padding: 0;
+}
+
+.employee__image img {
+  display: block;
+  width: 100%;
+  min-width: 100%;
+  height: auto;
+  margin: 0;
+  border-radius: 0;
+  object-fit: cover;
+}
+
+.employee__content {
+  flex: 1;
+  padding: var(--selbu-space-sm);
+  border: 0;
+}
+
+.employee__content div {
+  padding-bottom: var(--selbu-space-xs);
+  font-size: 1rem;
+}
+
+.employee__content a {
+  color: var(--selbu-primary);
+  font-size: 1rem;
+  text-underline-offset: 4px;
+}
+
+.employee__content a::before {
+  content: "mail";
+  display: inline-block;
+  margin-right: 6px;
+  color: var(--selbu-primary);
+  font-family: "Material Icons";
+  font-size: 1.2rem;
+  vertical-align: text-bottom;
+}
+
+@media (max-width: 900px) {
+  ul.employees__list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--selbu-space-sm);
+  }
+}
+
+/* 11. Lenkekort */
+
+.dss-block--acf-link-list.layout-grid {
+  width: 100%;
+  max-width: var(--selbu-width-module);
+  margin: var(--selbu-space-section) auto;
+}
+
+.dss-block--acf-link-list.layout-grid .dss-block__inner > h2 {
+  text-align: center;
+}
+
+.dss-block--acf-link-list.layout-grid .item-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--selbu-space-sm);
+  margin: 0;
+  padding: 0;
+}
+
+.dss-block--acf-link-list.layout-grid .item-list__li {
+  overflow: hidden;
+  min-width: 0;
+  padding: var(--selbu-space-sm);
+  color: var(--selbu-text);
+  background: var(--selbu-white);
+  border: 0;
+  border-radius: var(--selbu-radius-button);
+  box-shadow: var(--selbu-shadow-card);
+  transition:
+    color 180ms ease,
+    background-color 180ms ease,
+    box-shadow 180ms ease,
+    outline-color 180ms ease;
+}
+
+.dss-block--acf-link-list.layout-grid .item-list__li:hover,
+.dss-block--acf-link-list.layout-grid .item-list__li:focus-within {
+  color: var(--selbu-primary);
+  background: var(--selbu-secondary-pale);
+  outline: 2px solid var(--selbu-primary);
+  box-shadow: var(--selbu-shadow-hover);
+}
+
+.dss-block--acf-link-list.layout-grid .item-list__image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.dss-block--acf-link-list.layout-grid .item-list__title {
+  color: var(--selbu-dark);
+  font-size: 1.2rem;
+}
+
+.dss-block--acf-link-list.layout-grid .external-icon {
+  display: none;
+}
+
+.dss-login-block {
+  display: none;
+}
+
+@media (max-width: 540px) {
+  .dss-block--acf-link-list.layout-grid .item-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--selbu-space-xs);
+  }
+
+  .dss-block--acf-link-list.layout-grid.selbu-link-list-horizontal .item-list {
+    grid-template-columns: 1fr;
+  }
+
+  .dss-block--acf-link-list.layout-grid.selbu-link-list-horizontal
+    .item-list__li {
+    display: flex;
+    align-items: center;
+  }
+}
+
+/* 12. Informasjonsfelt og fremhevede kolonner */
+
+main#content
+  .content-blocks
+  > .wp-block-columns.has-background:not(.selbu-unstyled) {
+  box-sizing: border-box;
+  gap: var(--selbu-space-sm);
+  width: calc(100% - 32px);
+  max-width: var(--selbu-width-module);
+  margin: var(--selbu-space-section) auto;
+  padding: var(--selbu-space-lg);
+  background: var(--selbu-secondary-soft) !important;
+  border-radius: var(--selbu-radius-card);
+  box-shadow: var(--selbu-shadow-card);
+}
+
+main#content .content-blocks > .wp-block-columns.selbu-info {
+  background: var(--selbu-white) !important;
+}
+
+/* 13. FAQ, trekkspill og kontorer */
+
+:is(
+  .dss-block--acf-faq,
+  .dss-block--acf-accordion,
+  .dss-block--acf-office-contact
+) {
+  box-sizing: border-box;
+  width: calc(100% - 32px);
+  max-width: var(--selbu-width-module);
+  margin-right: auto;
+  margin-bottom: var(--selbu-space-section);
+  margin-left: auto;
+  padding: 1px var(--selbu-space-lg);
+  background: var(--selbu-white);
+  border-radius: var(--selbu-radius-card);
+  box-shadow: var(--selbu-shadow-card);
+}
+
+:is(
+    .dss-block--acf-faq,
+    .dss-block--acf-accordion,
+    .dss-block--acf-office-contact
+  )
+  .item-list__li {
+  border-width: 0 0 4px;
+  border-style: solid;
+  border-color: var(--selbu-page);
+}
+
+:is(
+    .dss-block--acf-faq,
+    .dss-block--acf-accordion,
+    .dss-block--acf-office-contact
+  )
+  .item-list__li:last-child {
+  border-bottom: 0;
+}
+
+:is(
+    .dss-block--acf-faq,
+    .dss-block--acf-accordion,
+    .dss-block--acf-office-contact
+  )
+  summary {
+  color: var(--selbu-text);
+  font-size: 1.15rem;
+  font-weight: 400 !important;
+  cursor: pointer;
+}
+
+:is(
+    .dss-block--acf-faq,
+    .dss-block--acf-accordion,
+    .dss-block--acf-office-contact
+  )
+  .item-list__title {
+  padding-top: var(--selbu-space-sm) !important;
+  padding-bottom: var(--selbu-space-sm) !important;
+}
+
+:is(
+    .dss-block--acf-faq,
+    .dss-block--acf-accordion,
+    .dss-block--acf-office-contact
+  )
+  details[open]
+  > summary {
+  color: var(--selbu-primary);
+}
+
+.dss-block--acf-office-contact .has-light-primary-background-color {
+  background: var(--selbu-white) !important;
+}
+
+.dss-block--acf-office-contact .department-info-sections div {
+  font-size: 1rem;
+}
+
+.dss-block--acf-office-contact .department-info-sections strong {
+  font-size: 1.35rem;
+  font-weight: 400;
+}
+
+@media (max-width: 640px) {
+  :is(
+    .dss-block--acf-faq,
+    .dss-block--acf-accordion,
+    .dss-block--acf-office-contact
+  ) {
+    padding-right: var(--selbu-space-sm);
+    padding-left: var(--selbu-space-sm);
+  }
+}
+
+/* 14. Kalkulator */
+
+.dss-block--acf-calculator {
+  box-sizing: border-box;
+  width: calc(100% - 32px);
+  max-width: var(--selbu-width-module);
+  margin-right: auto;
+  margin-bottom: var(--selbu-space-section);
+  margin-left: auto;
+  padding: var(--selbu-space-sm);
+  background: var(--selbu-white) !important;
+  border-radius: var(--selbu-radius-feature);
+  box-shadow: var(--selbu-shadow-card);
+  font-size: 1rem;
+}
+
+.dss-block--acf-calculator h2 {
+  width: 100%;
+  margin-top: 0;
+  color: var(--selbu-primary);
+  text-align: center;
+}
+
+.dss-block--acf-calculator .calculator__result-wrapper {
+  padding: var(--selbu-space-lg);
+  background: var(--selbu-primary-pale) !important;
+  border-radius: var(--selbu-radius-card);
+  box-shadow: var(--selbu-shadow-card);
+  text-align: center;
+}
+
+.dss-block--acf-calculator .calculator__inputs-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  padding-right: var(--selbu-space-sm);
+}
+
+.dss-block--acf-calculator .calculator-field {
+  width: 100%;
+}
+
+.dss-block--acf-calculator .calculator-field:nth-child(4),
+.dss-block--acf-calculator .calculator-field:nth-child(5) {
+  width: 50%;
+}
+
+.dss-block--acf-calculator .calculator__input-field-container {
+  margin: 0;
+}
+
+.dss-block--acf-calculator select.calc-input {
+  width: 100%;
+}
+
+.dss-block--acf-calculator .calculator__links-section {
+  display: flex;
+  justify-content: center;
+  margin-top: 2em;
+}
+
+@media (max-width: 900px) {
+  .dss-block--acf-calculator .calculator {
+    flex-direction: column;
+  }
+
+  .dss-block--acf-calculator .calculator__inputs-wrapper {
+    padding-right: 0;
+    padding-bottom: var(--selbu-space-lg);
+  }
+}
+
+@media (max-width: 521px) {
+  .dss-block--acf-calculator .calculator-field:nth-child(4),
+  .dss-block--acf-calculator .calculator-field:nth-child(5) {
+    width: 100%;
+  }
+}
+
+/* 15. Prislister */
+
+.dss-block--acf-prices {
+  box-sizing: border-box;
+  width: calc(100% - 32px);
+  max-width: var(--selbu-width-module);
+  margin-right: auto;
+  margin-bottom: var(--selbu-space-lg);
+  margin-left: auto;
+}
+
+.dss-block--acf-prices h2 {
+  margin: 0;
+  color: var(--selbu-primary);
+  font-size: 1.5rem;
+}
+
+.dss-block--acf-prices .price-table__notes p {
+  font-size: 0.8rem !important;
+}
+
+.dss-block--acf-prices .wp-block-table.is-style-price-table {
+  margin-top: 0;
+  margin-bottom: var(--selbu-space-sm);
+}
+
+.dss-block--acf-prices table.price-table td {
+  border-right: 2px solid var(--selbu-page);
+}
+
+.dss-block--acf-prices table.price-table tr.price-table__row {
+  border-top: 2px solid var(--selbu-page);
+}
+
+.dss-block--acf-prices.tbody--light-primary tbody tr:nth-child(even) {
+  background: var(--selbu-page);
+}
+
+.dss-block--acf-prices.tbody--light-primary tbody tr:nth-child(odd) {
+  background: var(--selbu-primary-pale);
+}
+
+/* 16. Skjema */
+
+main#content :is(input, select, textarea) {
+  box-sizing: border-box;
+  max-width: 100%;
+  color: var(--selbu-text);
+  background: var(--selbu-white);
+  border-color: var(--selbu-dark-hover);
+  border-radius: var(--selbu-radius-button);
+}
+
+main#content :is(input, select, textarea):focus {
+  border-color: var(--selbu-primary);
+  outline: 3px solid var(--selbu-primary-soft);
+  outline-offset: 1px;
+}
+
+.wp-block-heading.selbu-form-title {
+  width: calc(100% - 32px);
+  max-width: var(--selbu-width-module) !important;
+  margin-top: var(--selbu-space-section);
+  text-align: center;
+}
+
+/* 17. Bunnområde */
+
+.footer {
+  color: var(--selbu-dark);
+  background: var(--selbu-secondary-soft);
+}
+
+.footer a,
+.footer a:visited {
+  color: var(--selbu-dark);
+  text-underline-offset: 4px;
+}
+
+.footer a:hover {
+  color: var(--selbu-primary);
+}
+
+.footer h3 {
+  color: var(--selbu-dark);
+}
+
+.footer__top,
+.footer__bottom {
+  box-sizing: border-box;
+}
+
+/* 18. Hjelpeklasser */
+
+.selbu-wide {
+  width: calc(100% - 32px) !important;
+  max-width: var(--selbu-width-module) !important;
+  margin-right: auto !important;
+  margin-left: auto !important;
+}
+
+.selbu-text-width {
+  width: calc(100% - 32px) !important;
+  max-width: var(--selbu-width-text) !important;
+  margin-right: auto !important;
+  margin-left: auto !important;
+}
+
+.selbu-unstyled {
+  /* Beholder modulens standardstil fra WordPress-temaet. */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
