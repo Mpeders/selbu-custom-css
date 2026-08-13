@@ -335,6 +335,7 @@ main#content .content-blocks > .dss-block--acf-image-text {
   overflow: hidden;
   width: 100%;
   max-width: var(--site-width-content);
+  margin-top: 0;
   margin-right: auto;
   margin-bottom: var(--site-space-section);
   margin-left: auto;
@@ -343,7 +344,7 @@ main#content .content-blocks > .dss-block--acf-image-text {
   box-shadow: var(--site-shadow-card);
 }
 
-main#content .content-blocks > .dss-block--acf-image-text:first-child {
+main#content .content-blocks > .dss-block--acf-image-text.block-has-background {
   max-width: var(--site-width-wide);
   background: var(--site-header);
   border-radius: var(--site-radius-feature);
@@ -352,7 +353,7 @@ main#content .content-blocks > .dss-block--acf-image-text:first-child {
 body:not(.has-breadcrumb)
   main#content
   .content-blocks
-  > .dss-block--acf-image-text:first-child {
+  > .dss-block--acf-image-text.block-has-background {
   margin-top: 80px;
 }
 
@@ -380,21 +381,21 @@ main#content .dss-block--acf-image-text .dss-block__content {
 
 main#content
   .content-blocks
-  > .dss-block--acf-image-text:first-child
+  > .dss-block--acf-image-text.block-has-background
   .dss-block__content {
   background: var(--site-header) !important;
 }
 
 main#content
   .content-blocks
-  > .dss-block--acf-image-text:first-child
+  > .dss-block--acf-image-text.block-has-background
   :is(h1, h2, h3, h4, p, li) {
   color: var(--site-white) !important;
 }
 
 main#content
   .content-blocks
-  > .dss-block--acf-image-text:first-child
+  > .dss-block--acf-image-text.block-has-background
   .dss-block--acf-buttons
   a.btn--secondary {
   color: var(--site-white);
@@ -404,12 +405,12 @@ main#content
 
 main#content
   .content-blocks
-  > .dss-block--acf-image-text:first-child
+  > .dss-block--acf-image-text.block-has-background
   .dss-block--acf-buttons
   a.btn--secondary:hover,
 main#content
   .content-blocks
-  > .dss-block--acf-image-text:first-child
+  > .dss-block--acf-image-text.block-has-background
   .dss-block--acf-buttons
   a.btn--secondary:focus-visible {
   color: var(--site-header);
@@ -442,7 +443,7 @@ main#content .dss-block--acf-image-text .dss-block__inner > picture img {
 
 main#content
   .content-blocks
-  > .dss-block--acf-image-text:first-child
+  > .dss-block--acf-image-text.block-has-background
   > .dss-block__inner
   > :is(img, picture) {
   aspect-ratio: 16 / 9;
@@ -1009,10 +1010,17 @@ main#content .content-blocks > .wp-block-columns.has-background {
   margin-right: auto;
   margin-bottom: var(--site-space-section);
   margin-left: auto;
-  padding: 1px var(--site-space-4);
   background: var(--site-white);
   border-radius: var(--site-radius-card);
   box-shadow: var(--site-shadow-card);
+}
+
+.dss-block--acf-faq {
+  padding: var(--site-space-4);
+}
+
+:is(.dss-block--acf-accordion, .dss-block--acf-office-contact) {
+  padding: 1px var(--site-space-4);
 }
 
 :is(
@@ -1315,11 +1323,11 @@ main#content:has(.gform_wrapper) .content-blocks > .wp-block-heading {
     margin-top: var(--site-space-4);
   }
 
-  :is(
-    .dss-block--acf-faq,
-    .dss-block--acf-accordion,
-    .dss-block--acf-office-contact
-  ) {
+  .dss-block--acf-faq {
+    padding: var(--site-space-3) var(--site-space-2);
+  }
+
+  :is(.dss-block--acf-accordion, .dss-block--acf-office-contact) {
     padding-right: var(--site-space-2);
     padding-left: var(--site-space-2);
   }
