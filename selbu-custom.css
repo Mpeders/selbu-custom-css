@@ -1138,6 +1138,111 @@ ul.employees__list {
   }
 }
 
+/* Seks bildelenker: samme skala og rytme som øvrige store lenkemenyer. */
+
+.dss-block--acf-link-list.layout-grid:has(
+    .item-list > .item-list__li:nth-child(6):last-child
+  ):has(.item-list__image img)
+  .item-list {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 40px;
+  font-size: 1.2rem;
+}
+
+.dss-block--acf-link-list.layout-grid:has(
+    .item-list > .item-list__li:nth-child(6):last-child
+  ):has(.item-list__image img)
+  .item-list__li {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.dss-block--acf-link-list.layout-grid:has(
+    .item-list > .item-list__li:nth-child(6):last-child
+  ):has(.item-list__image img)
+  .item-list__image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  height: 128px;
+  margin-bottom: var(--selbu-space-sm);
+}
+
+.dss-block--acf-link-list.layout-grid:has(
+    .item-list > .item-list__li:nth-child(6):last-child
+  ):has(.item-list__image img)
+  .item-list__image
+  img {
+  width: 100%;
+  min-width: 0;
+  max-height: 128px;
+  border-radius: 0;
+  object-fit: contain;
+}
+
+.dss-block--acf-link-list.layout-grid:has(
+    .item-list > .item-list__li:nth-child(6):last-child
+  ):has(.item-list__image img)
+  .item-list__title {
+  justify-content: center;
+  text-align: center;
+}
+
+.dss-block--acf-link-list.layout-grid:has(
+    .item-list > .item-list__li:nth-child(6):last-child
+  ):has(.item-list__image img)
+  .link__content {
+  flex-direction: row;
+}
+
+@media (max-width: 900px) {
+  .dss-block--acf-link-list.layout-grid:has(
+      .item-list > .item-list__li:nth-child(6):last-child
+    ):has(.item-list__image img)
+    .item-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+  }
+}
+
+@media (max-width: 540px) {
+  .dss-block--acf-link-list.layout-grid:has(
+      .item-list > .item-list__li:nth-child(6):last-child
+    ):has(.item-list__image img)
+    .item-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--selbu-space-xs);
+  }
+
+  .dss-block--acf-link-list.layout-grid:has(
+      .item-list > .item-list__li:nth-child(6):last-child
+    ):has(.item-list__image img)
+    .item-list__li {
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 20px;
+  }
+
+  .dss-block--acf-link-list.layout-grid:has(
+      .item-list > .item-list__li:nth-child(6):last-child
+    ):has(.item-list__image img)
+    .item-list__image {
+    width: auto;
+    height: 128px;
+    margin-bottom: var(--selbu-space-sm);
+  }
+
+  .dss-block--acf-link-list.layout-grid:has(
+      .item-list > .item-list__li:nth-child(6):last-child
+    ):has(.item-list__image img)
+    .item-list__image
+    img {
+    border-radius: 0;
+  }
+}
+
 /* 12. Informasjonsfelt og fremhevede kolonner */
 
 main#content
@@ -1177,6 +1282,17 @@ main#content .content-blocks > .wp-block-columns.selbu-info {
   box-shadow: var(--selbu-shadow-card);
 }
 
+main#content
+  .content-blocks
+  > :is(
+    .dss-block--acf-faq,
+    .dss-block--acf-accordion,
+    .dss-block--acf-office-contact
+  )[data-max-width] {
+  width: calc(100% - 32px);
+  max-width: var(--selbu-width-module) !important;
+}
+
 :is(
     .dss-block--acf-faq,
     .dss-block--acf-accordion,
@@ -1204,7 +1320,7 @@ main#content .content-blocks > .wp-block-columns.selbu-info {
   )
   summary {
   color: var(--selbu-text);
-  font-size: 1.15rem;
+  font-size: 1.2rem;
   font-weight: 400 !important;
   cursor: pointer;
 }
