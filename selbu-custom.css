@@ -1,6 +1,6 @@
 /*
  * Selbu Sparebank – WordPress
- * Visuell videreføring av Selbu Sparebanks etablerte nettdesign.
+ * Selvstendig modulstil for Selbu Sparebanks WordPress-løsning.
  *
  * Omfang:
  * - grunnstil og innholdsrytme
@@ -64,6 +64,8 @@
 }
 
 body.bedrift {
+  --selbu-radius-small: 8px;
+  --selbu-radius-button: 8px;
   --selbu-radius-card: 0;
   --selbu-radius-feature: 0;
 }
@@ -279,6 +281,10 @@ header#navigation {
   max-width: 800px;
 }
 
+.navigation__overlay__inner__top .main .navigation .menu-item a {
+  font-size: 1.35rem;
+}
+
 .container.container--wide:has(> .btn--breadcrumb-link) {
   display: flex;
   box-sizing: border-box;
@@ -393,7 +399,7 @@ main#content
     .dss-block--acf-image-text.selbu-hero
   ):not(.selbu-unstyled) {
   max-width: var(--selbu-width-wide);
-  background: var(--selbu-dark);
+  background: var(--selbu-white);
   border-radius: var(--selbu-radius-feature);
 }
 
@@ -460,18 +466,8 @@ main#content
     .dss-block--acf-image-text:first-child,
     .dss-block--acf-image-text.selbu-hero
   )
-  :is(h1, h2, h3, h4, p, li) {
-  color: var(--selbu-white);
-}
-
-main#content
-  .content-blocks
-  > :is(
-    .dss-block--acf-image-text:first-child,
-    .dss-block--acf-image-text.selbu-hero
-  )
   .dss-block__content {
-  background: transparent !important;
+  background: var(--selbu-white) !important;
 }
 
 body.no-breadcrumb
@@ -621,6 +617,27 @@ main#content
   padding: 8px 24px 24px !important;
 }
 
+main#content .content-blocks > .wp-block-columns.selbu-card-grid--compact {
+  gap: var(--selbu-space-sm);
+}
+
+main#content
+  .content-blocks
+  > .wp-block-columns.selbu-card-grid--compact
+  > .wp-block-column
+  > .wp-block-heading {
+  padding: 16px 16px 8px !important;
+  font-size: 1.5rem;
+}
+
+main#content
+  .content-blocks
+  > .wp-block-columns.selbu-card-grid--compact
+  > .wp-block-column
+  > .wp-block-paragraph {
+  padding: 0 16px 16px !important;
+}
+
 @media (max-width: 781px) {
   main#content
     .content-blocks
@@ -719,7 +736,7 @@ main#content
 
 .latest-articles-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: var(--selbu-space-sm);
   width: 100%;
   max-width: var(--selbu-width-module);
@@ -745,6 +762,10 @@ main#content
     outline-color 180ms ease;
 }
 
+.dss-block--acf-latest-articles[data-max-width="wide"] .dss-block__inner {
+  flex-direction: column-reverse;
+}
+
 .dss-block--acf-latest-articles:hover .dss-block__inner,
 .dss-block--acf-latest-articles:focus-within .dss-block__inner {
   outline: 1px solid var(--selbu-primary);
@@ -765,9 +786,21 @@ main#content
   aspect-ratio: 16 / 9;
 }
 
+.dss-block--acf-latest-articles[data-max-width="wide"] img {
+  border-radius: 0 0 var(--selbu-radius-card) var(--selbu-radius-card);
+}
+
+.dss-block--acf-latest-articles[data-max-width="6-cols"] img {
+  border-radius: var(--selbu-radius-card) var(--selbu-radius-card) 0 0;
+}
+
 .dss-block--acf-latest-articles .content {
   flex: 1;
   padding: var(--selbu-space-sm);
+}
+
+.dss-block--acf-latest-articles .content > div {
+  display: none;
 }
 
 .dss-block--acf-latest-articles h2 {
@@ -801,6 +834,13 @@ main#content
 }
 
 /* 10. Ansatte */
+
+.wp-block-heading.selbu-employees-title {
+  width: calc(100% - 32px);
+  max-width: var(--selbu-width-module) !important;
+  margin-right: auto !important;
+  margin-left: auto !important;
+}
 
 .dss-block--acf-employees {
   width: 100%;
@@ -860,7 +900,7 @@ ul.employees__list {
 
 .employee__content a {
   color: var(--selbu-primary);
-  font-size: 1rem;
+  font-size: 1.25rem;
   text-underline-offset: 4px;
 }
 
@@ -870,8 +910,8 @@ ul.employees__list {
   margin-right: 6px;
   color: var(--selbu-primary);
   font-family: "Material Icons";
-  font-size: 1.2rem;
-  vertical-align: text-bottom;
+  font-size: 1.4rem;
+  vertical-align: top;
 }
 
 @media (max-width: 900px) {
@@ -895,10 +935,18 @@ ul.employees__list {
 
 .dss-block--acf-link-list.layout-grid .item-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: var(--selbu-space-sm);
   margin: 0;
   padding: 0;
+}
+
+.dss-block--acf-link-list.layout-grid:has(
+    .item-list > .item-list__li:nth-child(4):last-child
+  )
+  .item-list {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 40px;
 }
 
 .dss-block--acf-link-list.layout-grid .item-list__li {
@@ -932,6 +980,31 @@ ul.employees__list {
   object-fit: contain;
 }
 
+.dss-block--acf-link-list.layout-grid:has(.item-list__image img)
+  .item-list__li {
+  padding: 0 0 20px;
+}
+
+.dss-block--acf-link-list.layout-grid:has(.item-list__image img)
+  .item-list__image {
+  height: 100%;
+  margin-bottom: var(--selbu-space-sm);
+}
+
+.dss-block--acf-link-list.layout-grid:has(.item-list__image img)
+  .item-list__image
+  img {
+  min-width: 100%;
+  max-height: 100%;
+  border-radius: var(--selbu-radius-button) var(--selbu-radius-button) 0 0;
+  object-fit: cover;
+}
+
+.dss-block--acf-link-list.layout-grid:has(.item-list__image img)
+  .link__content {
+  flex-direction: column;
+}
+
 .dss-block--acf-link-list.layout-grid .item-list__title {
   color: var(--selbu-dark);
   font-size: 1.2rem;
@@ -945,20 +1018,78 @@ ul.employees__list {
   display: none;
 }
 
+@media (max-width: 900px) {
+  .dss-block--acf-link-list.layout-grid .item-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  .dss-block--acf-link-list.layout-grid:has(
+      .item-list > .item-list__li:nth-child(4):last-child
+    )
+    .item-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  :is(
+      .footer .dss-block--acf-link-list.layout-grid,
+      .dss-block--acf-link-list.layout-grid.selbu-footer-links
+    )
+    .item-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 540px) {
   .dss-block--acf-link-list.layout-grid .item-list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: var(--selbu-space-xs);
   }
 
+  .dss-block--acf-link-list.layout-grid:has(.item-list__image img) .item-list,
   .dss-block--acf-link-list.layout-grid.selbu-link-list-horizontal .item-list {
     grid-template-columns: 1fr;
   }
 
+  .dss-block--acf-link-list.layout-grid:has(.item-list__image img)
+    .item-list__li,
   .dss-block--acf-link-list.layout-grid.selbu-link-list-horizontal
+    .item-list__li,
+  :is(
+      .footer .dss-block--acf-link-list.layout-grid,
+      .dss-block--acf-link-list.layout-grid.selbu-footer-links
+    )
     .item-list__li {
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    padding: var(--selbu-space-xs);
+  }
+
+  .dss-block--acf-link-list.layout-grid:has(.item-list__image img)
+    .item-list__image,
+  :is(
+      .footer .dss-block--acf-link-list.layout-grid,
+      .dss-block--acf-link-list.layout-grid.selbu-footer-links
+    )
+    .item-list__image {
+    width: 30%;
+    height: 100%;
+    margin-bottom: 0;
+  }
+
+  .dss-block--acf-link-list.layout-grid:has(.item-list__image img)
+    .item-list__image
+    img {
+    border-radius: var(--selbu-radius-button) 0 0 var(--selbu-radius-button);
+  }
+
+  :is(
+      .footer .dss-block--acf-link-list.layout-grid,
+      .dss-block--acf-link-list.layout-grid.selbu-footer-links
+    )
+    .item-list {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -1088,7 +1219,7 @@ main#content .content-blocks > .wp-block-columns.selbu-info {
   margin-left: auto;
   padding: var(--selbu-space-sm);
   background: var(--selbu-white) !important;
-  border-radius: var(--selbu-radius-feature);
+  border-radius: var(--selbu-radius-card);
   box-shadow: var(--selbu-shadow-card);
   font-size: 1rem;
 }
@@ -1111,16 +1242,17 @@ main#content .content-blocks > .wp-block-columns.selbu-info {
 .dss-block--acf-calculator .calculator__inputs-wrapper {
   display: flex;
   flex-wrap: wrap;
+  justify-content: flex-start;
   padding-right: var(--selbu-space-sm);
 }
 
 .dss-block--acf-calculator .calculator-field {
-  width: 100%;
+  width: 90%;
 }
 
 .dss-block--acf-calculator .calculator-field:nth-child(4),
 .dss-block--acf-calculator .calculator-field:nth-child(5) {
-  width: 50%;
+  width: 45%;
 }
 
 .dss-block--acf-calculator .calculator__input-field-container {
@@ -1137,6 +1269,14 @@ main#content .content-blocks > .wp-block-columns.selbu-info {
   margin-top: 2em;
 }
 
+.dss-block--acf-calculator .calculator__cta-section p {
+  font-size: 0.7rem !important;
+}
+
+.dss-block--acf-calculator .calculator__links-section-link a::after {
+  display: none;
+}
+
 @media (max-width: 900px) {
   .dss-block--acf-calculator .calculator {
     flex-direction: column;
@@ -1146,12 +1286,31 @@ main#content .content-blocks > .wp-block-columns.selbu-info {
     padding-right: 0;
     padding-bottom: var(--selbu-space-lg);
   }
+
+  .dss-block--acf-calculator .calculator-field {
+    width: 100%;
+  }
+
+  .dss-block--acf-calculator .calculator-field:nth-child(4),
+  .dss-block--acf-calculator .calculator-field:nth-child(5) {
+    width: 50%;
+  }
 }
 
 @media (max-width: 521px) {
   .dss-block--acf-calculator .calculator-field:nth-child(4),
   .dss-block--acf-calculator .calculator-field:nth-child(5) {
     width: 100%;
+  }
+
+  .dss-block--acf-calculator .calculator__input-group.short {
+    width: 100%;
+  }
+
+  .dss-block--acf-calculator
+    .calculator__input-group.short
+    .calculator__input-field-container {
+    width: 80%;
   }
 }
 
@@ -1219,6 +1378,11 @@ main#content :is(input, select, textarea):focus {
   max-width: var(--selbu-width-module) !important;
   margin-top: var(--selbu-space-section);
   text-align: center;
+}
+
+main#content:has(:is(.selbu-form-title, .gform_wrapper))
+  > .container.container--wide:has(> .btn--breadcrumb-link) {
+  display: none;
 }
 
 /* 17. Bunnområde */
